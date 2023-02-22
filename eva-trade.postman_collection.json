@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "d2ba8200-d870-4672-92b1-f4671f571ed5",
+		"name": "eva-trade",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22001510"
+	},
+	"item": [
+		{
+			"name": "Create portfolio",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Raw 1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Investment\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/portfolios",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"portfolios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get complete portfolio information",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Raw 1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/portfolios/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"portfolios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create share",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Rivian\",\n    \"symbol\": \"RVN\",\n    \"price\": 35.93,\n    \"quantity\": 1300\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/shares",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all shares",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/shares/:symbol",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shares",
+						":symbol"
+					],
+					"variable": [
+						{
+							"key": "symbol",
+							"value": "RVN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update share",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 42.73\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/shares/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shares",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transactions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Raw 3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/transactions?portfolioId=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "portfolioId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create buy transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Raw 1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"GOG\",\n    \"quantity\": 20,\n    \"portfolioId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/transactions?type=buy",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "buy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create sell transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Raw 1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"portfolioId\": 1,\n    \"symbol\": \"GOG\",\n    \"quantity\": 110\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/transactions?type=sell",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "sell"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
