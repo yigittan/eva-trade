@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
 const Share = sequelize.define("shares", {
   name: DataTypes.STRING,
   symbol: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(3),
     unique: true,
     allowNull: true,
     validate: {
